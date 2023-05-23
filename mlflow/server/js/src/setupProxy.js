@@ -8,6 +8,7 @@ module.exports = function(app) {
   // there.
   const proxyTarget = process.env.MLFLOW_PROXY || 'http://localhost:5000/';
   const proxyStaticTarget = process.env.MLFLOW_STATIC_PROXY || proxyTarget;
+  app.proxy = true;
   app.use(
     createProxyMiddleware('/ajax-api', {
       target: proxyTarget,

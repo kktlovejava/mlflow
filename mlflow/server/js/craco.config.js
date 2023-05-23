@@ -278,7 +278,7 @@ module.exports = function ({ env }) {
       configure: (webpackConfig, { env, paths }) => {
         webpackConfig.output.publicPath = 'static-files/';
         webpackConfig = i18nOverrides(webpackConfig);
-        webpackConfig = configureIframeCSSPublicPaths(webpackConfig, env);
+        // webpackConfig = configureIframeCSSPublicPaths(webpackConfig, env);
         webpackConfig = enableOptionalTypescript(webpackConfig);
         console.log('Webpack config:', webpackConfig);
         return webpackConfig;

@@ -1158,7 +1158,13 @@ class Utils {
   static getIframeCorrectedRoute(route: any) {
     if (Utils.isUsingExternalRouter()) {
       // If using external routing, include the parent params and assume mlflow served at #
-      const parentHref = window.parent.location.href;
+      let parentHref = '';
+      try {
+        // 수정 parent.location.href가 없음 
+        parentHref = window.parent.location.href;
+      } catch (error) {
+        parentHref = window.location.href;
+      }
       const parentHrefBeforeMlflowHash = parentHref.split('#')[0];
       return `${parentHrefBeforeMlflowHash}#mlflow${route}`;
     }
